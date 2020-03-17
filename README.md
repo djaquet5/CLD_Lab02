@@ -4,19 +4,54 @@ Author : Baptiste Hardrick & David Jaquet
 
 ## Create a database using the RDS
 
+- TODO : REMOVE CREDS
+  
 - credential for the DB :
-  - username : admin
-  - pwd : adminpassword
-- Endpoint address:
-  - hardrick-drupal.cv3ojyhiunqm.us-east-1.rds.amazonaws.com
+  
+  - First
+    - username : admin
+    - pwd : adminpassword
+  - Second
+    - Username : newadmin
+    - pwd : newadminpassword
+  
+  
+  
 - Copy the estimated costs you calculated and add it to your report.
+
+  - As you can see below, the estimated costs is about **$ 14.71** by month
+
+    ![Estimated Costs](./assets/EstimatedCosts.jpg)
+
 - Compare the costs of your RDS instance to a continuously running EC2 instance of the same size using the AWS calculator. (Don't forget to uncheck the **Free Usage Tier** checkbox at the top.)
+
+  - As you can see below, we use an EBS Volume of **20 GB** an it costs **$ 10.50**. The RDS instance is more expensive.
+
+    ![EC2 Detail](./assets/EC2Detail.jpg)
+
+    ![Monthly payment](./assets/MonthlyPayment.jpg)
+
 - In a two-tier architecture the web application and the database are kept separate and run on different hosts. Imagine that for the second tier instead of using RDS to store the data you would create a virtual machine in EC2 and install and run yourself a database on it. If you were the Head of IT of a medium-size business, how would you argue in favor of using a database as a service instead of running your own database on an EC2 instance? How would you argue against it?
+
+  - Using RDS is better than an a database for multiple reasons :
+    - The execution of queries is faster.
+    - Best tuples indexing
+    - We can easily create some relation between 2 tables
+    - RDS handle concurrency, so multiple users can access to the databases at the same time
+    - RDS handle large datasets more easily
+    - It scales well
+
 - Copy the endpoint address of the database into the report.
+
+  - The endpoint address of the database is [hardrick-drupal.cv3ojyhiunqm.us-east-1.rds.amazonaws.com](hardrick-drupal.cv3ojyhiunqm.us-east-1.rds.amazonaws.com)
 
 ## Configure the Drupal master instance to use the RDS database
 
 - Copy the part of **settings.php** that configures the database into the report.
+
+  - You can find below a screenshot of the **settings.php** file :
+
+    ![Settings.php](./assets/settings.jpg)
 
 ## Create a custom virtual
 
