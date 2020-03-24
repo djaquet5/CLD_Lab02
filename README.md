@@ -57,19 +57,53 @@ Author : Baptiste Hardrick & David Jaquet
 
 - Copy a screenshot of the AWS console showing the AMI parameters into the report.
 
+  - You can find below a screenshot of the AWS console with the AMI parameters :
+
+    ![AMI Parameters](./assets/AMIParameter.png)
+
 ## Create a load balancer
 
 - On your local machine resolve the DNS name of the load balancer into an IP address using the nslookup command (Linux or Windows). Write the DNS name and the resolved IP Address(es) into the report.
+
+  - As you can see in screenshot below, the DNS name of our load balancer is [hardrick-loadBalancer-410735606.us-east-1.elb.amazonaws.com](hardrick-loadBalancer-410735606.us-east-1.elb.amazonaws.com) and the IP addresses are `52.7.249.117` and `52.6.4.29`.
+
+    ![nslookup on DNS](./assets/nslookupOnDNS.png)
+
 - In the Apache access log identify the health check accesses from the load balancer and copy some samples into the report.
+
+  - You can fin below a sample of the Apache access log. The accesses seem to be healthy.
+
+    ![Apache access log](./assets/access.png)
 
 ## Launch a second instance from the custom image
 
 - Draw a diagram of the setup you have created showing the components (instances, database, load balancer, client) and how they are connected. Include the security groups as well.
 
+  - Below, the diagram :
+
+    ![Diagram](./assets/diagram.png)
+
 - Using the [Simple Monthly Calculator](http://calculator.s3.amazonaws.com/calc5.html) calculate the monthly cost of this setup. You can ignore traffic costs. (Make sure you don't forget to include a component in the calculation. Also don't forget to uncheck the **Free Usage Tier** checkbox at the top.)
+
+  - Below the total cost :
+
+    ![Total Costs](./assets/totalCosts.jpg)
 
 ## Test the distributed application
 
 - Document your observations. Include screenshots of JMeter and the AWS console monitoring output.
 - When you resolve the DNS name of the load balancer into IP addresses while the load balancer is under high load what do you see? Explain.
 - Did this test really test the load balancing mechanism? What are the limitations of this simple test? What would be necessary to do realistic testing?
+
+![](./assets/firstLBTest.jpg)
+
+![](./assets/LB1000Threads.jpg)
+
+![](./assets/1000Threads1000Times.jpg)
+
+![](./assets/nslookup.jpg)
+
+![](./assets/TimeOut.jpg)
+
+![](./assets/Instances.jpg)
+
