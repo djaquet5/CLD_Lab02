@@ -71,7 +71,7 @@ Author : Baptiste Hardrick & David Jaquet
 
 - In the Apache access log identify the health check accesses from the load balancer and copy some samples into the report.
 
-  - You can fin below a sample of the Apache access log. The accesses seem to be healthy.
+  - You can fin below the messages of the load balancer's health check. The messages have been record in the logs.
 
     ![Apache access log](./assets/access.png)
 
