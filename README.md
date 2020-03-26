@@ -92,7 +92,13 @@ Author : Baptiste Hardrick & David Jaquet
 ## Test the distributed application
 
 - Document your observations. Include screenshots of JMeter and the AWS console monitoring output.
+
 - When you resolve the DNS name of the load balancer into IP addresses while the load balancer is under high load what do you see? Explain.
+
+  - As you can see in the screenshot below, we can't get the IP addresses associate to the load balancer. The Load balancer cannot be reached.
+
+    ![nslookup under high load](./assets/nslookup.jpg)
+
 - Did this test really test the load balancing mechanism? What are the limitations of this simple test? What would be necessary to do realistic testing?
 
 ![](./assets/firstLBTest.jpg)
@@ -100,8 +106,6 @@ Author : Baptiste Hardrick & David Jaquet
 ![](./assets/LB1000Threads.jpg)
 
 ![](./assets/1000Threads1000Times.jpg)
-
-![](./assets/nslookup.jpg)
 
 ![](./assets/TimeOut.jpg)
 
