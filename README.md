@@ -4,19 +4,6 @@ Author : Baptiste Hardrick & David Jaquet
 
 ## Create a database using the RDS
 
-- TODO : REMOVE CREDS
-  
-- credential for the DB :
-  
-  - First
-    - username : admin
-    - pwd : adminpassword
-  - Second
-    - Username : newadmin
-    - pwd : newadminpassword
-  
-  
-  
 - Copy the estimated costs you calculated and add it to your report.
 
   - As you can see below, the estimated costs is about **$ 14.71** by month
@@ -45,6 +32,14 @@ Author : Baptiste Hardrick & David Jaquet
 
   - The endpoint address of the database is [hardrick-drupal.cv3ojyhiunqm.us-east-1.rds.amazonaws.com](hardrick-drupal.cv3ojyhiunqm.us-east-1.rds.amazonaws.com)
 
+### Additional Information
+
+In this task, we had to create a user for DB Instance. We took this laboratory as an exercise, so the credentials are not secure at all and should not be used in a real situation. The credentials are the following:
+
+| Username | Password        |
+| -------- | --------------- |
+| `admin`  | `adminpassword` |
+
 ## Configure the Drupal master instance to use the RDS database
 
 - Copy the part of **settings.php** that configures the database into the report.
@@ -52,6 +47,14 @@ Author : Baptiste Hardrick & David Jaquet
   - You can find below a screenshot of the **settings.php** file :
 
     ![Settings.php](./assets/settings.jpg)
+
+### Additional Information
+
+In this task, we had to create a user for DB Instance. We took this laboratory as an exercise, so the credentials are not secure at all and should not be used in a real situation. The credentials are the following:
+
+| Username   | Password           |
+| ---------- | ------------------ |
+| `newadmin` | `newadminpassword` |
 
 ## Create a custom virtual
 
@@ -93,21 +96,33 @@ Author : Baptiste Hardrick & David Jaquet
 
 - Document your observations. Include screenshots of JMeter and the AWS console monitoring output.
 
+  - You can find below our first load balancing test. The main instance receive all the requests
+
+    ![First Load Balancing](./assets/firstLBTest.jpg)
+
+    Then we edit the number of users (threads) that execute a request. You can find in the screenshot below the the result of JMeter test with 1000 users. As you can see, there is **4.46%** of errors.
+
+    ![Load Balancing Tests with 1000 Threads](./assets/LB1000Threads.jpg)
+
+    To increase the errors and have a better representation of the load balancing, we execute the same test as before but every threads iterate 1000 times. You can see in the screenshot below the result of our test. As you can see, the errors rise to **99.91%**.
+
+    ![1000 Threads loop 1000 times](./assets/1000Threads1000Times.jpg)
+
+    When the user receive a time out, he gets an empty error has shown below :
+
+    ![Time out error](./assets/TimeOut.jpg)
+
+    By monitoring the instances, we can see that instance send a response to all packets received. This proves the packets time out.
+
+    ![Instance monitoring](./assets/Instances.jpg)
+
 - When you resolve the DNS name of the load balancer into IP addresses while the load balancer is under high load what do you see? Explain.
 
-  - As you can see in the screenshot below, we can't get the IP addresses associate to the load balancer. The Load balancer cannot be reached.
+  - As you can see in the screenshot below, we have a time out. The load balancer is overwhelmed and can no longer handle new connections. So, the server will manage the connection already established and ignores new incoming connections.
 
     ![nslookup under high load](./assets/nslookup.jpg)
 
 - Did this test really test the load balancing mechanism? What are the limitations of this simple test? What would be necessary to do realistic testing?
 
-![](./assets/firstLBTest.jpg)
-
-![](./assets/LB1000Threads.jpg)
-
-![](./assets/1000Threads1000Times.jpg)
-
-![](./assets/TimeOut.jpg)
-
-![](./assets/Instances.jpg)
+  - We haven't really test the load balancing mechanism because only the main instance seems to have some requests. We should define some rules in the load balancer to indicate when the load balancer have to send some requests to the second instance.
 
