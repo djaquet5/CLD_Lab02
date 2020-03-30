@@ -1,4 +1,4 @@
-# Lab 02 - Cloud Computing
+# Cloud Computing - Laboratory 02 : App scaling on Amazon Web Services
 
 Author : Baptiste Hardrick & David Jaquet
 
@@ -125,4 +125,3 @@ In this task, we had to create a user for DB Instance. We took this laboratory a
 - Did this test really test the load balancing mechanism? What are the limitations of this simple test? What would be necessary to do realistic testing?
 
   - We haven't really test the load balancing mechanism because only the main instance seems to have some requests. We should define some rules in the load balancer to indicate when the load balancer have to send some requests to the second instance.
-
